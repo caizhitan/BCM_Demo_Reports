@@ -1,0 +1,21 @@
+.main-container {
+    display: flex;
+    flex-direction: column;  
+    gap: 40px;  
+ }
+ 
+ .form-button-pair {
+   display: flex;
+   flex-direction: row;  
+   align-items: center;  
+   gap: 20px;  
+ }
+ 
+ .form-controls-container {
+    flex: 0;  
+ }
+ 
+ .buttons-container {
+    flex: none;  
+ }
+ 

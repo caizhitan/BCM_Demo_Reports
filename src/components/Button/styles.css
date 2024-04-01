@@ -1,0 +1,39 @@
+.icon-button-wrapper .MuiButton-containedPrimary, .icon-button-wrapper .MuiButton-containedPrimary:hover,
+.primary-button-wrapper .MuiButton-containedPrimary, .primary-button-wrapper .MuiButton-containedPrimary:hover {
+    background-color: #618BFC;
+}
+
+/* ========== DOWNLOAD BUTTON STYLES ========== */
+
+.button, .button * {
+    box-sizing: border-box;
+}
+
+.button {
+    background: var(--light-blue, #466bdd);
+    border-radius: 4px;
+    padding: 23px 17px 22px 9px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center; 
+    min-width: 202px; 
+    height: 52px;
+    position: relative;
+    white-space: nowrap; 
+    user-select: none;
+}
+
+.icon {
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+}
+
+.label {
+    color: var(--white, #ffffff);
+    text-align: left;
+    font: 600 20px 'Lato', sans-serif;
+    position: relative;
+}
