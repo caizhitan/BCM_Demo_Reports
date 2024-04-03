@@ -42,23 +42,26 @@ If you scroll up to view the posters above you can see that:
 
 My work done relates to calculating and generating the Comprehensive Financial Reports.
 
-There are 3 Financial Reports
+There are 3 Financial Reports:
 - Variation Summary
 - Service Mileage and Cost Summary
 - Contract Variation Cost Summary
 
-## Table of Contents for My Work Done
-- [Sorting Data](#sorting-data)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- 
-- Route Amendment (RA)
-- Grouped Route Amendment (GRA)
-- Change in Trip Count (CITC)
-- Grouped Change in Trip Count (GCITC)
-- Grouped Route Amendment & Change in Trip Count (GRACITC)
-- Addition of Bus Service (Not relevant to Reports)
-- Removal of Bus Service (Not relevant to Reports)
+### Table of Contents for My Work Done
+- [Sorting Data](#Sorting-data)
+- [Grouping Data](#grouping-data)
+- [Calculating Data](#calculating-data)
+- [Storing Data](#storing-data)
+- [Sharing Data Between Reports](#sharing-data-between-reports)
 
-## Installation
+## Sorting Data
+
+## Grouping Data
+
+## Calculating Data
+
+## Storing Data
+
+## Sharing Data Between Reports
+
+
