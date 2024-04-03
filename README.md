@@ -19,7 +19,7 @@ If you live in Singapore and frequently take the Bus to commute to School/Work/A
 
 LTA constantly monitors the data collected to understand how we can serve the public better and to provide a better bus riding experience to all as such LTA will make changes to certain Bus Routes to help increase rider satisfaction or to save cost if there is low rider count.
 
-There was a period where the public was unsatisfied with LTA's decision to remove Bus 167 and thus LTA decided to change the frequency of Bus 167 to 30 minutes interval. (This is important as I will be discussing about this later below)
+There was a period where the public was unsatisfied with LTA's decision to remove Bus 167 and thus LTA decided to change the frequency of Bus 167 to 30 minute intervals. (This is important as I will be discussing about this later below)
 
 News Source: [The Straits Time](https://www.straitstimes.com/singapore/transport/lta-u-turns-on-decision-to-stop-bus-service-167-route-to-be-retained-with-30-minute-intervals)
 
@@ -60,6 +60,135 @@ There are 3 Financial Reports:
 - [Storing Data](#storing-data)
 - [Sharing Data Between Reports](#sharing-data-between-reports)
 
+### Our sample JSON Data (Before Sorting)
+```json
+{
+  "variationNumber": "3283",
+  "variationName": "This is a extra extra super duper longish variation description for testing purposes",
+  "unitRate": 2.25,
+  "fuelRate": 1,
+  "busFleet": [
+    {
+      "contract": "PT210",
+      "values": [
+        {
+          "Service": "80",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100],
+            "DiesalDD": [280524, -4, 200]
+          },
+          "Implementation": ["27022024-31082026"]
+        }
+      ]
+    },
+    {
+      "contract": "PT211",
+      "values": [
+        {
+          "Service": "81",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100],
+            "DiesalDD": [280524, -4, 200]
+          },
+          "Implementation": ["27022024-31082026"]
+        }
+      ]
+    },
+    {
+      "contract": "PT214",
+      "values": [
+        {
+          "Service": "84",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100],
+            "DiesalDD": [280524, -4, 200]
+          },
+          "Implementation": ["27022024-31082026"]
+        }
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "contract": "PT210",
+      "values": [
+        {
+          "Service": "81",
+          "Direction": 2,
+          "Pattern": 1,
+          "TotalMileage": 20,
+          "NewMileage": 18,
+          "RouteDifference": -2,
+          "implementationPeriod": [
+            ["27022024-31082024", "[102,25,25,33,0,0]"],
+            ["01092024-31082025", "[198,52,52,63,0,0]"],
+            ["01092025-31082026", "[198,52,52,63,0,0]"]
+          ],
+          "tripCount": [120, 10, 30, 15, 20, 30]
+        }
+      ]
+    },
+    {
+      "contract": "PT212",
+      "values": [
+        {
+          "Service": "82",
+          "Direction": 1,
+          "Pattern": 1,
+          "TotalMileage": 20,
+          "NewMileage": 0,
+          "RouteDifference": 20,
+          "implementationPeriod": [
+            ["27022024-31082024", "[102,25,25,33,0,0]"],
+            ["01092024-31082025", "[198,52,52,63,0,0]"],
+            ["01092025-31082026", "[198,52,52,63,0,0]"]
+          ],
+          "tripCount": [120, 10, 30, 15, 20, 30]
+        }
+      ]
+    },
+    {
+      "contract": "PT222",
+      "values": [
+        {
+          "Service": "92",
+          "Direction": 1,
+          "Pattern": 1,
+          "TotalMileage": 20,
+          "NewMileage": 0,
+          "RouteDifference": 20,
+          "implementationPeriod": [
+            ["27022024-31082024", "[102,25,25,33,0,0]"],
+            ["01092024-31082025", "[198,52,52,63,0,0]"],
+            ["01092025-31082026", "[198,52,52,63,0,0]"]
+          ],
+          "tripCount": [120, 10, 30, 15, 20, 30]
+        }
+      ]
+    },
+    {
+      "contract": "PT223",
+      "values": [
+        {
+          "Service": "93",
+          "Direction": 1,
+          "Pattern": 1,
+          "TotalMileage": 20,
+          "NewMileage": 0,
+          "RouteDifference": 20,
+          "implementationPeriod": [
+            ["27022024-31082024", "[102,25,25,33,0,0]"],
+            ["01092024-31082025", "[198,52,52,63,0,0]"],
+            ["01092025-31082026", "[198,52,52,63,0,0]"]
+          ],
+          "tripCount": [120, 10, 30, 15, 20, 30]
+        }
+      ]
+    }
+  ]
+}
+
+```
 ## Sorting Data
 Instead of the 3 scenarios for the Business side. The Software Engineering side has 6 different scenarios.
 1. Route Amendment (RA)
@@ -68,16 +197,6 @@ Instead of the 3 scenarios for the Business side. The Software Engineering side 
 4. Grouped Change in Trip Count (GCITC)
 5. Grouped Route Amendment & Change in Trip Count (GRACITC)
 6. Only Bus Fleet 
-
-### Our JSON Data
-```json
-{
-  "name": "John Doe",
-  "age": 30,
-  "city": "New York"
-}
-```
-
 
 ## Grouping Data
 
