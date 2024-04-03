@@ -44,25 +44,74 @@ If you scroll up to view the posters above you can see that:
 - Service 167 is an example of Removal of Bus Service (Oops I meant Change in Trip Count now..)
 - Service 980 is Change in Trip Count. (Increased Freqeuncy and extended operating hours)
 
-## Getting Technical. (Reports)
+## My Work Done (Reports)
 
-My work done relates to calculating and generating the Comprehensive Financial Reports.
+My work done relates to understanding the data, calculating and generating the comprehensive Financial Reports.
 
 There are 3 Financial Reports:
 - Variation Summary
 - Service Mileage and Cost Summary
 - Contract Variation Cost Summary
 
-### Table of Contents for My Work Done
-- [Sorting Data](#Sorting-data)
+### Table of Contents
+- [Explaination of Data](#explaination-of-data)
+- [Sorting Data](#sorting-data)
 - [Grouping Data](#grouping-data)
 - [Calculating Data](#calculating-data)
 - [Storing Data](#storing-data)
 - [Sharing Data Between Reports](#sharing-data-between-reports)
 
-### Our sample JSON Data (Before Sorting)
-```json
-{
+## Explaination of Data
+
+```jsonc
+  "variationNumber": "3283", // A number for tracking the variation
+  "variationName": "This is a very short example of the data", // Description
+  "unitRate": 2.25, // Unit Rate (This number needs to be adjusted yearly according to 2% annual inflation)
+  "fuelRate": 1, // Fuel Rate 
+  "busFleet": [
+    {
+      "contract": "PT210", // Contract Number (Multiple Service Numbers within 1 Contract No)
+      "values": [
+        {
+          "Service": "80", // Bus Service number
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100], // "Bus Type (Diesal Single Decker)" : [Handover/Return Date , Unit of Buses , Price Per Unit]
+            "DiesalDD": [280524, -4, 200] // "Bus Type (Diesal Double Decker)" : [Handover/Return Date , Unit of Buses , Price Per Unit]
+          },
+          "Implementation": ["27022024-31082026"] // Date for these Buses 
+        },
+      ],
+    },
+  ],
+  "contracts": [
+    {
+      "contract": "PT210", // Contract Number (Multiple Service Numbers within 1 Contract No)
+      "values": [
+        {
+          "Service": "81", // Bus Service number
+          "Direction": 2, 
+          "Pattern": 1,
+          "TotalMileage": 20, // Mileage for Service 81 for Direction 2 Pattern 1
+          "NewMileage": 18, // Adjusted (Correct) Mileage
+          "RouteDifference": -2, // Route Amendment affected Mileage 
+          "implementationPeriod": [
+            ["27022024-31082024", "[102,25,25,33,0,0]"], // Frequency of [MonToThurs,Fri,Sat,Sun,PublicHoliday,SchoolHoliday] in between "27022024-31082024"
+            ["01092024-31082025", "[198,52,52,63,0,0]"], // Same as top example
+            ["01092025-31082026", "[198,52,52,63,0,0]"]  // Same as top example
+          ],
+          "tripCount": [120, 10, 30, 15, 20, 30] // Trip Count for [MonToThurs,Fri,Sat,Sun,PublicHoliday,SchoolHoliday]
+        },
+      ],
+    },
+  ]
+
+```
+
+
+### A more realistic sample JSON Data (Before Processing)
+  <details>
+  <summary>View JSON Data</summary>
+    <pre><code>{
   "variationNumber": "3283",
   "variationName": "This is a extra extra super duper longish variation description for testing purposes",
   "unitRate": 2.25,
@@ -187,8 +236,10 @@ There are 3 Financial Reports:
     }
   ]
 }
+    </code></pre>
+</details>
 
-```
+
 ## Sorting Data
 Instead of the 3 scenarios for the Business side. The Software Engineering side has 6 different scenarios.
 1. Route Amendment (RA)
