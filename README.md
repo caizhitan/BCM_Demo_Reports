@@ -1,4 +1,11 @@
 # BCM_Reports
+## Table of Contents
+- [Introduction](#AlittleinfomationaboutBCM)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+  
 ## A little infomation about BCM.
 Bus operators like SBS Transit, SMRT used to own their own Bus Fleet and manage their own Bus Routes under Bus Service Operating Licence (BSOL). However after 1 Sept 2016 LTA implemented the Bus Contracting Model (BCM). Under BCM, LTA now owns all buses, infrastructure and depots, Bus Routes are also openly bidded to the highest bidder to operate the Bus Route. In return LTA can allocate more or less buses to the Bus Routes that require them. Bus Operators are paid a fixed rate to operate the Bus Service while LTA collects the fare revenue which allows Bus Operators to focus on providing a reliable Bus Service to the public instead of focusing on revenue.
 
@@ -46,3 +53,5 @@ If you scroll up to view the posters above you can see that:
 - Grouped Route Amendment & Change in Trip Count (GRACITC)
 - Addition of Bus Service (Not relevant to Reports)
 - Removal of Bus Service (Not relevant to Reports)
+
+## Installation
