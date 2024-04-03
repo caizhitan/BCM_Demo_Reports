@@ -55,8 +55,7 @@ There are 3 Financial Reports:
 
 ### Table of Contents
 - [Explaination of Data](#explaination-of-data)
-- [Sorting Data](#sorting-data)
-- [Grouping Data](#grouping-data)
+- [Sorting and Grouping Data](#sorting-and-grouping-data)
 - [Calculating Data](#calculating-data)
 - [Storing Data](#storing-data)
 - [Sharing Data Between Reports](#sharing-data-between-reports)
@@ -239,16 +238,140 @@ There are 3 Financial Reports:
 </details>
 
 
-## Sorting Data
-Instead of the 3 scenarios for the Business side. The Software Engineering side has 6 different scenarios.
+## Sorting and Grouping Data
+Instead of the 3 scenarios for the Business side. The Software Engineering side has 11 different scenarios.
 1. Route Amendment (RA)
+``` JSON
+{
+  "contract": "PT222",
+  "values": [
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 1,
+      "TotalMileage": 20,
+      "NewMileage": 26,
+      "RouteDifference": 6, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [10, 10, 0, 0, 0, 0]
+    },
+  ],
+}
+
+```
+RA : `NewMileage != 0` 
+
 2. Grouped Route Amendment (GRA)
+``` JSON
+{
+  "contract": "PT222",
+  "values": [
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 1,
+      "TotalMileage": 20,
+      "NewMileage": 26,
+      "RouteDifference": 6, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [100, 20, 0, 0, 0, 0]
+    },
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 2,
+      "TotalMileage": 15,
+      "NewMileage": 12,
+      "RouteDifference": -3, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [120, 30, 40, 5, 0, 0]
+    },
+  ],
+}
+```
+More than 2 of the **SAME** Service & **SAME** Start & End Dates (27022024 & 31082026) with `NewMileage != 0`
+
 3. Change in Trip Count (CITC)
+``` JSON
+{
+  "contract": "PT222",
+  "values": [
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 1,
+      "TotalMileage": 20,
+      "NewMileage": 0,
+      "RouteDifference": 20, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [100, 20, 0, 0, 0, 0]
+    },
+  ],
+}
+```
+
+CITC : `NewMileage = 0`
+
+
 4. Grouped Change in Trip Count (GCITC)
+``` JSON
+{
+  "contract": "PT222",
+  "values": [
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 1,
+      "TotalMileage": 20,
+      "NewMileage": 0,
+      "RouteDifference": 20, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [100, 20, 0, 0, 0, 0]
+    },
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 2,
+      "TotalMileage": 15,
+      "NewMileage": 0,
+      "RouteDifference": 15, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [120, 30, 40, 5, 0, 0]
+    },
+  ],
+}
+```
+Morn than 2 of the **SAME** Service & **SAME** Start & End Dates  (27022024 & 31082026) with `NewMileage = 0`
+
 5. Grouped Route Amendment & Change in Trip Count (GRACITC)
+
+  
 6. Only Bus Fleet 
 
-## Grouping Data
 
 ## Calculating Data
 
