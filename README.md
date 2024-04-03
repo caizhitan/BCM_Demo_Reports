@@ -2,9 +2,9 @@
 > [!IMPORTANT]
 > **Note: All data in this repo is fictional and does not depict actual financials**.
 
-This repository focuses on just Reports, which is just a small segment within BCM Web Portal which is for internal LTA usage.
+This repository focuses on just Reports, which is a small segment within BCM Web Portal which is **confidential** for internal LTA usage.
 
-**As such Minimal UI will be shown.**
+*As such Minimal User Interfaces will be shown.*
 
 ## A little infomation about BCM.
 Bus operators like SBS Transit, SMRT used to own their own Bus Fleet and manage their own Bus Routes under Bus Service Operating Licence (BSOL). However after 1 Sept 2016 LTA implemented the Bus Contracting Model (BCM). Under BCM, LTA now owns all buses, infrastructure and depots, Bus Routes are also openly bidded to the highest bidder to operate the Bus Route. In return LTA can allocate more or less buses to the Bus Routes that require them. Bus Operators are paid a fixed rate to operate the Bus Service while LTA collects the fare revenue which allows Bus Operators to focus on providing a reliable Bus Service to the public instead of focusing on revenue.
