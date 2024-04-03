@@ -124,7 +124,7 @@ There are 3 Financial Reports:
           "Service": "80",
           "Transaction": {
             "DiesalSD": [190224, 3, 100],
-            "DiesalDD": [280524, -4, 200]
+            "Bendy": [280524, 4, 200]
           },
           "Implementation": ["27022024-31082026"]
         }
@@ -149,10 +149,9 @@ There are 3 Financial Reports:
         {
           "Service": "84",
           "Transaction": {
-            "DiesalSD": [190224, 3, 100],
-            "DiesalDD": [280524, -4, 200]
+            "ElectricSD": [190223, 1, 100],
           },
-          "Implementation": ["27022024-31082026"]
+          "Implementation": ["27022023-31032029"]
         }
       ]
     }
@@ -169,9 +168,10 @@ There are 3 Financial Reports:
           "NewMileage": 18,
           "RouteDifference": -2,
           "implementationPeriod": [
-            ["27022024-31082024", "[102,25,25,33,0,0]"],
+            ["13042024-31082024", "[102,25,25,33,0,0]"],
             ["01092024-31082025", "[198,52,52,63,0,0]"],
-            ["01092025-31082026", "[198,52,52,63,0,0]"]
+            ["01092025-31082026", "[198,52,52,63,0,0]"],
+            ["01092026-31082027", "[198,52,52,63,0,0]"],
           ],
           "tripCount": [120, 10, 30, 15, 20, 30]
         }
@@ -188,11 +188,10 @@ There are 3 Financial Reports:
           "NewMileage": 0,
           "RouteDifference": 20,
           "implementationPeriod": [
-            ["27022024-31082024", "[102,25,25,33,0,0]"],
+            ["01012023-31082024", "[102,25,25,33,0,0]"],
             ["01092024-31082025", "[198,52,52,63,0,0]"],
-            ["01092025-31082026", "[198,52,52,63,0,0]"]
           ],
-          "tripCount": [120, 10, 30, 15, 20, 30]
+          "tripCount": [100, 10, 60, 40, 20, 20]
         }
       ]
     },
@@ -203,15 +202,15 @@ There are 3 Financial Reports:
           "Service": "92",
           "Direction": 1,
           "Pattern": 1,
-          "TotalMileage": 20,
+          "TotalMileage": 6,
           "NewMileage": 0,
-          "RouteDifference": 20,
+          "RouteDifference": 6,
           "implementationPeriod": [
             ["27022024-31082024", "[102,25,25,33,0,0]"],
             ["01092024-31082025", "[198,52,52,63,0,0]"],
             ["01092025-31082026", "[198,52,52,63,0,0]"]
           ],
-          "tripCount": [120, 10, 30, 15, 20, 30]
+          "tripCount": [10, 10, 0, 0, 0, 0]
         }
       ]
     },
@@ -222,15 +221,15 @@ There are 3 Financial Reports:
           "Service": "93",
           "Direction": 1,
           "Pattern": 1,
-          "TotalMileage": 20,
+          "TotalMileage": 35,
           "NewMileage": 0,
-          "RouteDifference": 20,
+          "RouteDifference": 35,
           "implementationPeriod": [
             ["27022024-31082024", "[102,25,25,33,0,0]"],
             ["01092024-31082025", "[198,52,52,63,0,0]"],
             ["01092025-31082026", "[198,52,52,63,0,0]"]
           ],
-          "tripCount": [120, 10, 30, 15, 20, 30]
+          "tripCount": [0, 10, 30, 15, 20, 30]
         }
       ]
     }
