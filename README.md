@@ -9,9 +9,8 @@ If you live in Singapore and frequently take the Bus to commute to School/Work/A
 
 <img src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/8c89d873-434d-450d-a8fe-ef099d774b11" width="300"> <img src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/5585bbaa-37ec-4a35-84e0-3d31ac42f03a" width="300"> <img src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/f1bee8a1-df05-4d3c-bded-73bbc244ed82" width="300">
 
+There was a period where the public was unhappy with LTA's decision to remove Bus 167 and thus LTA decided to change the frequency of Bus 167 to 30 minutes interval. (This is important as I will be discussing about this later below)
 
-
-
-
+News Source: [The Straits Time](https://www.straitstimes.com/singapore/transport/lta-u-turns-on-decision-to-stop-bus-service-167-route-to-be-retained-with-30-minute-intervals)
 
 ## My work done (Reports)
