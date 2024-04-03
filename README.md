@@ -38,7 +38,7 @@ If you scroll up to view the posters above you can see that:
 - Service 167 is an example of Removal of Bus Service (Oops I meant Change in Trip Count now..)
 - Service 980 is Change in Trip Count. (Increased Freqeuncy and extended operating hours)
 
-## My Work Done (Reports)
+## Getting Technical. (Reports)
 
 My work done relates to calculating and generating the Comprehensive Financial Reports.
 
@@ -55,6 +55,23 @@ There are 3 Financial Reports:
 - [Sharing Data Between Reports](#sharing-data-between-reports)
 
 ## Sorting Data
+Instead of the 3 scenarios for the Business side. The Software Engineering side has 6 different scenarios.
+1. Route Amendment (RA)
+2. Grouped Route Amendment (GRA)
+3. Change in Trip Count (CITC)
+4. Grouped Change in Trip Count (GCITC)
+5. Grouped Route Amendment & Change in Trip Count (GRACITC)
+6. Only Bus Fleet 
+
+### Our JSON Data
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York"
+}
+```
+
 
 ## Grouping Data
 
