@@ -442,6 +442,7 @@ When there is 1 `Change in Trip Count` & 1 or more `Route Amendment`.
   ],
 }
 ```
+When within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists with 1 RA.
 
 ### 7. Grouped Route Amendment with Bus Fleet (GRA_BusFleet)
 ``` JSON
@@ -499,6 +500,7 @@ When there is 1 `Change in Trip Count` & 1 or more `Route Amendment`.
   ],
 }
 ```
+When within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists with more than 1 RA.
 
 ### 8. Change in Trip Count Amendment with Bus Fleet (CITC_BusFleet)
 ``` JSON
@@ -537,6 +539,7 @@ When there is 1 `Change in Trip Count` & 1 or more `Route Amendment`.
   ],
 }
 ```
+When within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists with 1 CITC.
 
 ### 9. Grouped Change in Trip Count with Bus Fleet (GCITC_BusFleet)
 ``` JSON
@@ -594,7 +597,7 @@ When there is 1 `Change in Trip Count` & 1 or more `Route Amendment`.
   ],
 }
 ```
-
+When within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists with more than 1 CITC.
 
 ### 11. Only Bus Fleet 
 ```JSON
@@ -615,6 +618,9 @@ When there is 1 `Change in Trip Count` & 1 or more `Route Amendment`.
 ]
 ```
 When within the same `Service` and `contract` and `Implementation` only Bus Fleet Exists. (NO RA/GRA/CITC/GCITC/RACITC)
+
+### Summary Flow Chart
+<img width="1027" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/439720d5-071c-46f9-bff6-702fac84188e">
 
 
 ## Calculating Data
