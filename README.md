@@ -676,13 +676,41 @@ When within the same `Service` and `contract` and `Implementation` only Bus Flee
 <img width="1027" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/439720d5-071c-46f9-bff6-702fac84188e">
 
 I was in charge of writing code to sort and group these conditions in `FirstReportData.js`. 
+
 These Functions are named:
 1. checkBusFleet
 2. createCategorizedKeys
 
 ## Calculating Data
+### 1. Calculating Additional Mileage
+
+For `RA/CITC/RA_BusFleet/CITC_BusFleet AdditionalMileage` : RouteDifference * tripCount Array. 
+
+Example:
+```JSON
+"RouteDifference": -5, 
+
+"tripCount": [120, 30, 40, 5, 0, 0]
+
+"additionalMileage" : [-600, -150, -200, -25, 0, 0]
+```
+
+
+
+### 2. Calculating FirstReportData
+
+
+### 3. Calculating Lease Fee Values
+
+
+### 4. Calculating Total Data
+
+
 
 ## Storing Data
+![image](https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/b62bfc0f-2c3f-4ba2-927c-daa7d496bea3)
+
+In summary this is how we store the data for Variation Summary Report (Report #1)
 
 ## Sharing Data Between Reports
 
