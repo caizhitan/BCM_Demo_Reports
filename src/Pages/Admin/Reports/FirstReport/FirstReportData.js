@@ -192,104 +192,6 @@ function createCategorizedKeys(checkedValues) {
 const categorizedKeys = createCategorizedKeys(checkedValues);
 console.log("muh categorizedKeys:", categorizedKeys);
 
-// This Function sorts the services according to: Route Amendment (RA), Grouped Route Amendment (GRA), Change In Trip Count (CITC), Grouped Change In Trip Count (GCITC), Route Amendment & Change In Trip Count (RACITC)
-// (Legacy function; to be deleted soon; replaced with createCategorizedKeys)
-function createSortedKeys(BusData) {
-  const results = {};
-
-  BusData.body.contracts.forEach((contract) => {
-    const contractNumber = contract.contract;
-    const serviceInfo = {};
-    contract.values.forEach((value) => {
-      // Check if values is RA or CITC. Label RA & CITC = true or false right into values.
-      value.routeAmendment =
-        value.NewMileage === value.TotalMileage + value.RouteDifference;
-      value.changeInTripCount =
-        value.NewMileage === 0 && value.TotalMileage === value.RouteDifference;
-
-      // Form DateKey for 1st stage seperation of firstDate & lastDate
-      const period = value.implementationPeriod;
-      const firstDate = period[0][0].split("-")[0];
-      const lastDate = period[period.length - 1][0].split("-")[1];
-      const serviceKey = `${value.Service}_${firstDate}_${lastDate}`;
-      serviceInfo[serviceKey] = serviceInfo[serviceKey] || {
-        RA: [],
-        CITC: [],
-        values: [],
-      };
-      console.log(" check this", serviceInfo);
-      serviceInfo[serviceKey].values.push(value);
-
-      // Assign values to RA or CITC categories
-      if (value.routeAmendment) {
-        serviceInfo[serviceKey].RA.push(value);
-      }
-      if (value.changeInTripCount) {
-        serviceInfo[serviceKey].CITC.push(value);
-      }
-    });
-
-    // Process RACITC, RA/GRA, CITC/GCITC
-    Object.keys(serviceInfo).forEach((key) => {
-      const group = serviceInfo[key];
-
-      // Identify RACITC groups
-      const racitcGroups = {};
-      group.values.forEach((value) => {
-        const racitcKey = `${value.Direction}_${value.Pattern}`; // Implemented this in cases of: same service & same dates but different direction/patterns but all are RACICT.
-        if (
-          group.RA.some(
-            (ra) =>
-              ra.Direction === value.Direction && ra.Pattern === value.Pattern
-          ) &&
-          group.CITC.some(
-            (citc) =>
-              citc.Direction === value.Direction &&
-              citc.Pattern === value.Pattern
-          )
-        ) {
-          racitcGroups[racitcKey] = racitcGroups[racitcKey] || [];
-          racitcGroups[racitcKey].push(value);
-        }
-      });
-
-      // Create separate keys for RACITC groups
-      Object.keys(racitcGroups).forEach((racitcKey) => {
-        results[contractNumber] = results[contractNumber] || {};
-        results[contractNumber][`${key}_${racitcKey}_RACITC`] = {
-          values: racitcGroups[racitcKey],
-        };
-      });
-
-      // Categorize remaining values as RA/GRA and CITC/GCITC
-      const remainingRA = group.RA.filter(
-        (v) => !racitcGroups[`${v.Direction}_${v.Pattern}`]
-      );
-      const remainingCITC = group.CITC.filter(
-        (v) => !racitcGroups[`${v.Direction}_${v.Pattern}`]
-      );
-
-      if (remainingRA.length > 0) {
-        const typeKey = remainingRA.length > 1 ? "GRA" : "RA";
-        results[contractNumber] = results[contractNumber] || {};
-        results[contractNumber][`${key}_${typeKey}`] = { values: remainingRA };
-      }
-
-      if (remainingCITC.length > 0) {
-        const typeKey = remainingCITC.length > 1 ? "GCITC" : "CITC";
-        results[contractNumber] = results[contractNumber] || {};
-        results[contractNumber][`${key}_${typeKey}`] = {
-          values: remainingCITC,
-        };
-      }
-    });
-  });
-
-  return results;
-}
-
-const sortedKeys = createSortedKeys(BusData);
-//console.log("muh sortedKeys:", sortedKeys);
 
 function calculateAdditionalMileage(categorizedKeys) {
   const results = {};
@@ -750,7 +652,6 @@ export {
   findServiceData,
   checkedValues,
   categorizedKeys,
-  sortedKeys,
   additionalMileage,
   frequencyByDayType,
   leaseFeeDetails,

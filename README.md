@@ -684,7 +684,7 @@ These Functions are named:
 ## Calculating Data
 ### 1. Calculating Additional Mileage
 
-For `RA/CITC/RA_BusFleet/CITC_BusFleet AdditionalMileage` : RouteDifference * tripCount Array. 
+For `RA/CITC/RA_BusFleet/CITC_BusFleet` Conditions: RouteDifference * tripCount Array. 
 
 Example:
 ```JSON
@@ -692,25 +692,307 @@ Example:
 
 "tripCount": [120, 30, 40, 5, 0, 0]
 
-"additionalMileage" : [-600, -150, -200, -25, 0, 0]
+
+"additionalMileage": [-600, -150, -200, -25, 0, 0]
 ```
 
+For `GRA/GCITC/GRA_BusFleet/GCITC_BusFleet` Conditions: (RouteDifference1 * tripCount Array1) + (RouteDifference2 * tripCount Array2) + as many values there are in the Group. Then use `totalAdditionalMileage` which sums the Arrays.
 
+Example:
+```JSON
+"RouteDifference1": -5, 
+
+"tripCount1": [120, 30, 40, 5, 0, 0]
+
+"additionalMileage1": [-600, -150, -200, -25, 0, 0]
+
+"RouteDifference2": 6, 
+
+"tripCount2": [200, 50, 30, 45, 0, 0]
+
+"additionalMileage2": [1200, 300, 180, 270, 0, 0]
+
+
+"totalAdditionalMileage": [600, 150, -20, 245, 0, 0]
+```
+
+For `onlyBusFleet (NA)`: There is no need to calculate.
 
 ### 2. Calculating FirstReportData
+- **Total Mileage for the Period**
+
+  For `RA/CITC/RA_BusFleet/CITC_BusFleet` Conditions: Multiply `implementationPeriod` Array with `additionalMileage` Array. Then sum the numbers in `totalMileageForThePeriod` Array to give you `mileage`
+
+  Example:
+  ```JSON
+  "implementationPeriod": [["27022024-31082024", "[102,25,25,33,0,0]"]]
+    
+  "additionalMileage": [-600, -150, -200, -25, 0, 0]
+
+  "totalMileageForThePeriod": [[-61200, -3750, -5000, -825, 0, 0]]
+
+
+  "mileage": -70775
+  ```
+
+  For `GRA/GCITC/GRA_BusFleet/GCITC_BusFleet` Conditions: Do the same as above but with more values. Then Sum the numbers in **all** the `totalMileageForThePeriod` Array to give you `mileage`.
+
+  Example:
+  ```JSON
+  "implementationPeriod1": [["27022024-31082024", "[102,25,25,33,0,0]"]]
+    
+  "additionalMileage1": [-600, -150, -200, -25, 0, 0]
+
+  "totalMileageForThePeriod1": [[-61200, -3750, -5000, -825, 0, 0]]
+
+  "implementationPeriod2": [["27022024-31082024", "[100,20,25,10,0,0]"]]
+    
+  "additionalMileage2": [-600, -150, -200, -25, 0, 0]
+
+  "totalMileageForThePeriod2": [[-60000, -3000, -5000, -250, 0, 0]]
+
+
+  "mileage": -139025
+  ```
+
+  For `onlyBusFleet (NA)`: There is no need to calculate.
+
+- **Base Rate (with 2% inflation)**
+
+  For `all` conditions: Retrived from JSON Data. (Use bigDecimal Half-UP Rounding Method of 2% for every period.)
+
+- **Yearly SF Cost (excl UFC)**
+
+  For `all` conditions except `onlyBusFleet (NA)`: `mileage` * `Base Rate` (Use bigDecimal Half-UP Rounding Method)
+
+- **Fuel Rate (excl UFC)**
+
+  For `all` conditions: Retrived from JSON Data. 
+
+- **Fuel Cost**
+
+  For `all` conditions except `onlyBusFleet (NA)`: `mileage` * `Fuel Rate` (Use bigDecimal Half-UP Rounding Method)
+
+  For `onlyBusFleet (NA)`: There is no need to calculate as no `mileage`. 
+
+- **Unit Rate (Incl Base Rate + Fuel Rate)**
+
+  For `all` conditions: `Base Rate` + `Fuel Rate`. 
+
+- **SF Cost (Incl Fuel Cost) for the period**
+
+  For `all` conditions except `onlyBusFleet (NA)`: `Yearly SF Cost` + `Fuel Cost` (Use bigDecimal Half-UP Rounding Method)
+
+- **No. of months in time period**
+
+  For `all` conditions except `onlyBusFleet (NA)` Conditions: Use DayJS Library to find difference 
+
+  Example:
+  ```JSON
+  "implementationPeriod": [["27022024-31082024", "[102,25,25,33,0,0]"]]
+
+  "dateDiff": 6.16
+  ```
+
+  For `onlyBusFleet (NA)`: Use DayJS Library to find difference 
+
+  Example:
+  ```JSON
+  "Implementation": ["27022024-31082024"]
+
+  "dateDiff": 6.16
+  ```
+
+- **Estimated Lease Fee per time period**
+
+  For `RA/CITC/GRA/GCITC` Conditions (**All Periods**): There is no need to calculate as BusFleet does not exist.
+
+  
+  For `RA_BusFleet/CITC_BusFleet/GRA_BusFleet/GCITC_BusFleet` Conditions (**First Period Only**): Take `Transaction` Array[1] date (190224, 280524) and compare with First Array `implementationPeriod` last date (31082024). Then multiply with `grandTotal` (retrieve from Array[1] * Array[2]). Sum them altogether.
+
+  Example:
+  ```JSON
+  "busFleet": [
+    {
+      "contract": "PT210", 
+      "values": [
+        {
+          "Service": "80",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100], 
+            "DiesalDD": [280524, -4, 200], 
+          },
+          "Implementation": ["27022024-31082026"],
+        },
+      ],
+    },
+  ],
+  "contracts": [
+      {
+        "contract": "PT210", 
+        "values": [
+          {
+            "Service": "80",
+            "Direction": 1,
+            "Pattern": 1,
+            "TotalMileage": 20,
+            "NewMileage": 15, 
+            "RouteDifference": -5,
+            "implementationPeriod": [
+              ["27022024-31082024", "[102,25,25,33,0,0]"],
+              ["01092024-31082025", "[198,52,52,63,0,0]"],
+              ["01092025-31082026", "[198,52,52,63,0,0]"],
+            ],
+            "tripCount": [120, 30, 40, 5, 0, 0],
+          },
+      ],
+    },
+  ]
+
+  "DisealSDdateDiff": 6.42
+  "DisealSDGrandTotal": 300
+  "DisealSDLeaseFeeTotal": 1926
+
+  "DisealDDdateDiff": 3.13
+  "DisealDDGrandTotal": -800
+  "DisealDDLeaseFee": -2504
+
+  "leaseFee": -578
+
+  ```
+  For `RA_BusFleet/CITC_BusFleet/GRA_BusFleet/GCITC_BusFleet` Conditions (**After First Period**): `dateDiff` should be default to 12. So 12 * `grandTotal` (retrieve from Array[1] * Array[2])
+
+  Example:
+  ```JSON
+  "busFleet": [
+    {
+      "contract": "PT210", 
+      "values": [
+        {
+          "Service": "80",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100], 
+            "DiesalDD": [280524, -4, 200], 
+          },
+          "Implementation": ["27022024-31082026"],
+        },
+      ],
+    },
+  ],
+  "contracts": [
+      {
+        "contract": "PT210", 
+        "values": [
+          {
+            "Service": "80",
+            "Direction": 1,
+            "Pattern": 1,
+            "TotalMileage": 20,
+            "NewMileage": 15, 
+            "RouteDifference": -5,
+            "implementationPeriod": [
+              ["27022024-31082024", "[102,25,25,33,0,0]"],
+              ["01092024-31082025", "[198,52,52,63,0,0]"],
+              ["01092025-31082026", "[198,52,52,63,0,0]"],
+            ],
+            "tripCount": [120, 30, 40, 5, 0, 0],
+          },
+      ],
+    },
+  ]
+
+  "DisealSDGrandTotal": 300
+  "DisealDDGrandTotal": -800
+
+  "leaseFee": -500 * 12 = 6000
+  ```
+
+  For `onlyBusFleet (NA)`: `dateDiff` *  `grandTotal` (retrieve from Array[1] * Array[2])
+  ```JSON
+  "busFleet": [
+    {
+      "contract": "PT210", 
+      "values": [
+        {
+          "Service": "80",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100], 
+            "DiesalDD": [280524, -4, 200], 
+          },
+          "Implementation": ["27022024-31082026"],
+        },
+      ],
+    },
+  ]
+
+  "grandTotal": (3 * 100) + (-4 * 200) = -500
+
+  "dateDiff": 6.16
+
+  "leaseFee" : -3080
+  ```
+
+- **Total Cost (SF + LF)**
+
+  For `all` conditions except `onlyBusFleet (NA)`: `leaseFee` value + `serviceFee` value.
+
+
+  For `onlyBusFleet (NA)`: Use `leaseFee` values only. As no `serviceFee` values.
+
+- **Total Amount Required**
+
+  For `all` conditions: `totalCost` (Roundup if amt is > 0 and rounddown If amt is <0 (Rounding are to 1,000))
 
 
 ### 3. Calculating Lease Fee Values
+- Grand Total
 
+  For `all` conditions except `RA/CITC/GRA/GCITC` conditions: Multiply `Transaction` Array [1] * Array [2]
+
+  Example:
+    ```JSON
+  "busFleet": [
+    {
+      "contract": "PT210", 
+      "values": [
+        {
+          "Service": "80",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100], 
+            "DiesalDD": [280524, -4, 200], 
+          },
+          "Implementation": ["27022024-31082026"],
+        },
+      ],
+    },
+  ]
+
+  "grandTotal": (3 * 100) + (-4 * 200) = -500
+  ```
+
+  For `RA/CITC/GRA/GCITC` conditions: No need to calculate, `busFleet` does not exist.
 
 ### 4. Calculating Total Data
+- Total Freqency By Day Type 
+- Total mileage
+- Total Yearly SF Cost
+- Total Fuel Cost
+- Total SF Cost
+- Total Cost (SF + LF)
+- Total Amount Required
+- Annual Mileage
+- Annual SF
+- Annual LF
+- Annual Cost
+- VO Start Date
+- VO End Date
 
 
 
 ## Storing Data
 ![image](https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/b62bfc0f-2c3f-4ba2-927c-daa7d496bea3)
 
-In summary this is how we store the data for Variation Summary Report (Report #1)
+In summary this is how we store the data for Variation Summary Report. (Report #1)
 
 ## Sharing Data Between Reports
 

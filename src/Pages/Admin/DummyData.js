@@ -8,49 +8,10 @@ export const BusData = {
     fuelRate: 1,
     busFleet: [
       {
-        contract: "PT210", // Tests isMatch=true, RA
+        contract: "PT235", // Tests isMatch=true, CITC
         values: [
           {
             Service: "80",
-            Transaction: {
-              DiesalSD: [190224, 3, 100], // (verified dates) if positive always be -7 working day between handover and first busfleet implementation date
-              DiesalDD: [280524, -4, 200], // (verified dates) if negative always be +3 months between handover and first busfleet implementation date
-            },
-            Implementation: ["27022024-31082026"],
-          },
-        ],
-      },
-      {
-        contract: "PT211", // Tests isMatch=true, GRA
-        values: [
-          {
-            Service: "81",
-            Transaction: {
-              DiesalSD: [190224, 3, 100], // (verified dates) if positive always be -7 working day between handover and first busfleet implementation date
-              DiesalDD: [280524, -4, 200], // (verified dates) if negative always be +3 months between handover and first busfleet implementation date
-            },
-            Implementation: ["27022024-31082026"],
-          },
-        ],
-      },
-      {
-        contract: "PT212", // Tests isMatch=true, CITC
-        values: [
-          {
-            Service: "82",
-            Transaction: {
-              DiesalSD: [190224, 3, 100], // (verified dates) if positive always be -7 working day between handover and first busfleet implementation date
-              DiesalDD: [280524, -4, 200], // (verified dates) if negative always be +3 months between handover and first busfleet implementation date
-            },
-            Implementation: ["27022024-31082026"],
-          },
-        ],
-      },
-      {
-        contract: "PT213", // Tests isMatch=true, CITC
-        values: [
-          {
-            Service: "83",
             Transaction: {
               DiesalSD: [190224, 3, 100], // (verified dates) if positive always be -7 working day between handover and first busfleet implementation date
               DiesalDD: [280524, -4, 200], // (verified dates) if negative always be +3 months between handover and first busfleet implementation date
@@ -82,14 +43,14 @@ export const BusData = {
             Direction: 1,
             Pattern: 1,
             TotalMileage: 20,
-            NewMileage: 18, // RA
-            RouteDifference: -2,
+            NewMileage: 15, // RA
+            RouteDifference: -5,
             implementationPeriod: [
               ["27022024-31082024", "[102,25,25,33,0,0]"],
               ["01092024-31082025", "[198,52,52,63,0,0]"],
               ["01092025-31082026", "[198,52,52,63,0,0]"],
             ],
-            tripCount: [120, 10, 30, 15, 20, 30],
+            tripCount: [120, 30, 40, 5, 0, 0],
           },
         ],
       },
@@ -352,9 +313,5 @@ export const BusData = {
   },
 };
 const { variationNumber, variationName } = BusData.body;
-  
-export {
-    variationName,
-    variationNumber,
-}
 
+export { variationName, variationNumber };
