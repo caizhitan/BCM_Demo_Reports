@@ -978,20 +978,25 @@ For `onlyBusFleet (NA)`: There is no need to calculate.
 - Annual SF
 - Annual LF
 - Annual Cost
-- VO Start Date
-- VO End Date
-
 
 
 ## Storing Data
+### Variation Summary Report (VS)
 <img width="3120" alt="SCR-20240404-nuch" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/bcbf53ac-cf6a-4bea-bb5d-6d7aa36a58a2">
 
 
-In summary this is how we store the data for Variation Summary Report. (Report #1)
+In summary this is how we store the data (in objects) for Variation Summary Report.
 
 ## Sharing Data Between Reports
-![SCR-20240404-nwdx](https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/d3b32292-7c13-460f-beef-8d57526a9dd2)
+
+### Service Mileage & Cost Summary Report (SMCS)
+<img width="3120" alt="SCR-20240404-nuch" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/d3b32292-7c13-460f-beef-8d57526a9dd2">
 
 
+For SMCS we can use totalFirstReportData object directly with some simple sorting.
+
+### Example Flow Chart
+
+### Contract Variation Cost Summary (CVCS)
 <img width="3120" alt="SCR-20240404-nydy" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/10213d3e-1255-4dfd-8bb6-8f069548857f">
 
