@@ -599,7 +599,7 @@ When within the same `Service` and `contract` and `Implementation/ImplmentationP
 ```
 When within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists with more than 1 CITC.
 
-### 10. Grouped Route Amendment & Change in Trip Count (GRACITC)
+### 10. Grouped Route Amendment & Change in Trip Count (GRACITC_BusFleet)
 ``` jsonc
     "busFleet": [
     {
@@ -674,12 +674,6 @@ When within the same `Service` and `contract` and `Implementation` only Bus Flee
 
 ### Summary Flow Chart
 <img width="1027" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/439720d5-071c-46f9-bff6-702fac84188e">
-
-I was in charge of writing code to sort and group these conditions in `FirstReportData.js`. 
-
-These Functions are named:
-1. checkBusFleet
-2. createCategorizedKeys
 
 ## Calculating Data
 ### 1. Calculating Additional Mileage
@@ -990,10 +984,14 @@ For `onlyBusFleet (NA)`: There is no need to calculate.
 
 
 ## Storing Data
-![image](https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/b62bfc0f-2c3f-4ba2-927c-daa7d496bea3)
+<img width="3120" alt="SCR-20240404-nuch" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/bcbf53ac-cf6a-4bea-bb5d-6d7aa36a58a2">
+
 
 In summary this is how we store the data for Variation Summary Report. (Report #1)
 
 ## Sharing Data Between Reports
+![SCR-20240404-nwdx](https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/d3b32292-7c13-460f-beef-8d57526a9dd2)
 
+
+<img width="3120" alt="SCR-20240404-nydy" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/10213d3e-1255-4dfd-8bb6-8f069548857f">
 
