@@ -1003,5 +1003,6 @@ For SMCS we can use totalFirstReportData object directly with `contract` sorting
 For CVCS we can use totalFirstReportData object directly with `endYear` and `contract` sorting.
 
 ### Simplified Explaination Flow Chart
-<img width="1156" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/ec2b7ff5-3944-46e1-aaa8-e643ab598fe3">
+<img width="1204" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/33e917b6-ee73-47e1-9371-9152b8291bb2">
+
 
