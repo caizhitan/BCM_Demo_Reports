@@ -599,7 +599,60 @@ When within the same `Service` and `contract` and `Implementation/ImplmentationP
 ```
 When within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists with more than 1 CITC.
 
-### 11. Only Bus Fleet 
+### 10. Grouped Route Amendment & Change in Trip Count (GRACITC)
+``` jsonc
+    "busFleet": [
+    {
+      "contract": "PT210", 
+      "values": [
+        {
+          "Service": "80",
+          "Transaction": {
+            "DiesalSD": [190224, 3, 100], 
+            "DiesalDD": [280524, -4, 200], 
+          },
+          "Implementation": ["27022024-31082026"],
+        },
+      ],
+    },
+],
+{
+  "contract": "PT222",
+  "values": [
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 1,
+      "TotalMileage": 20,
+      "NewMileage": 0, // This is a Change in Trip Count!
+      "RouteDifference": 20, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [100, 20, 0, 0, 0, 0]
+    },
+    {
+      "Service": "92",
+      "Direction": 1,
+      "Pattern": 2,
+      "TotalMileage": 15,
+      "NewMileage": 10, // This is a Route Amendment
+      "RouteDifference": -5, 
+      "implementationPeriod": [
+        ["27022024-31082024", "[102,25,25,33,0,0]"],
+        ["01092024-31082025", "[198,52,52,63,0,0]"],
+        ["01092025-31082026", "[198,52,52,63,0,0]"]
+      ],
+      "tripCount": [120, 30, 40, 5, 0, 0]
+    },
+  ],
+}
+```
+When there is 1 `Change in Trip Count` & 1 or more `Route Amendment` and within the same `Service` and `contract` and `Implementation/ImplmentationPeriod` and Bus Fleet Exists.
+
+### 11. Only Bus Fleet (NA)
 ```JSON
     "busFleet": [
     {
@@ -622,6 +675,10 @@ When within the same `Service` and `contract` and `Implementation` only Bus Flee
 ### Summary Flow Chart
 <img width="1027" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/439720d5-071c-46f9-bff6-702fac84188e">
 
+I was in charge of writing code to sort and group these conditions in `FirstReportData.js`. 
+These Functions are named:
+1. checkBusFleet
+2. createCategorizedKeys
 
 ## Calculating Data
 
