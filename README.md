@@ -49,9 +49,9 @@ If you scroll up to view the posters above you can see that:
 My work done relates to understanding the data, calculating and generating the comprehensive Financial Reports.
 
 There are 3 Financial Reports:
-- Variation Summary
-- Service Mileage and Cost Summary
-- Contract Variation Cost Summary
+- Variation Summary (VS)
+- Service Mileage and Cost Summary (SMCS)
+- Contract Variation Cost Summary (CVCS)
 
 ### Table of Contents
 - [Explaination of Data](#explaination-of-data)
@@ -673,7 +673,7 @@ When there is 1 `Change in Trip Count` & 1 or more `Route Amendment` and within 
 When within the same `Service` and `contract` and `Implementation` only Bus Fleet Exists. (NO RA/GRA/CITC/GCITC/RACITC)
 
 ### Summary Flow Chart
-<img width="1027" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/439720d5-071c-46f9-bff6-702fac84188e">
+<img width="1202" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/0bf09c19-c140-4864-a78d-d0c4a68fe8f1">
 
 ## Calculating Data
 ### 1. Calculating Additional Mileage
@@ -992,11 +992,16 @@ In summary this is how we store the data (in objects) for Variation Summary Repo
 ### Service Mileage & Cost Summary Report (SMCS)
 <img width="3120" alt="SCR-20240404-nuch" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/d3b32292-7c13-460f-beef-8d57526a9dd2">
 
+For SMCS we can use totalFirstReportData object directly with `contract` sorting.
 
-For SMCS we can use totalFirstReportData object directly with some simple sorting.
-
-### Example Flow Chart
+### Simplified Explaination Flow Chart
+<img width="1622" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/b2c2398f-f1ea-4a73-94e0-6d417578c639">
 
 ### Contract Variation Cost Summary (CVCS)
 <img width="3120" alt="SCR-20240404-nydy" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/10213d3e-1255-4dfd-8bb6-8f069548857f">
+
+For CVCS we can use totalFirstReportData object directly with `endYear` and `contract` sorting.
+
+### Simplified Explaination Flow Chart
+<img width="1156" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/ec2b7ff5-3944-46e1-aaa8-e643ab598fe3">
 
