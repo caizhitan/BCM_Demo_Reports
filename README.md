@@ -4,7 +4,7 @@
 
 This repository focuses on just Reports, which is a small segment within BCM Web Portal which is **confidential** for internal LTA usage.
 
-_As such Minimal User Interfaces will be shown._
+_As such Minimal User Interfaces will be shared._
 
 ## A little infomation about BCM.
 
@@ -62,14 +62,20 @@ There are 3 Financial Reports:
 - Service Mileage and Cost Summary (SMCS)
 - Contract Variation Cost Summary (CVCS)
 
-### Table of Contents
+## UI for our Reports Generation
+### On the Web Portal
+<img width="1560" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/85d784d2-5af4-4982-949f-f98604a3c7b1">
+
+### This Repo Demo
+https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/458c9748-4f77-4168-a8b2-2151abe060b7
+
+### Table of Contents (very technical/or scary *beware*)
 
 - [Explaination of Data](#explaination-of-data)
 - [Sorting and Grouping Data](#sorting-and-grouping-data)
 - [Calculating Data](#calculating-data)
 - [Our Data Objects](#our-data-objects)
 - [Sharing Data Between Reports](#sharing-data-between-reports)
-- [UI for our Reports](#ui-for-our-reports)
 
 ## Explaination of Data
 
@@ -896,7 +902,7 @@ For `onlyBusFleet (NA)`: There is no need to calculate.
 
   ```
 
-  For `RA_BusFleet/CITC_BusFleet/GRA_BusFleet/GCITC_BusFleet` Conditions (**After First Period**): `dateDiff` should be default to 12. So 12 _ `grandTotal` (retrieve from Array[1] _ Array[2])
+  For `RA_BusFleet/CITC_BusFleet/GRA_BusFleet/GCITC_BusFleet` Conditions (**After First Period**): `dateDiff` should be default to 12. So 12 * `grandTotal` (retrieve from Array[1] _ Array[2])
 
   Example:
 
@@ -940,8 +946,9 @@ For `onlyBusFleet (NA)`: There is no need to calculate.
 
   "DisealSDGrandTotal": 300
   "DisealDDGrandTotal": -800
+  "grandTotal": -500
 
-  "leaseFee": -500 * 12 = 6000
+  "leaseFee": 6000
   ```
 
   For `onlyBusFleet (NA)`: `dateDiff` _ `grandTotal` (retrieve from Array[1] _ Array[2])
@@ -1243,7 +1250,5 @@ For CVCS we can use totalFirstReportData object directly with `endYear` and `con
 ### Simplified Explaination Flow Chart:
 
 <img width="1204" alt="image" src="https://github.com/caizhitan/BCM_Demo_Reports/assets/150103035/33e917b6-ee73-47e1-9371-9152b8291bb2">
-
-## UI for our Reports
 
 ## The End (Thank you for reading or skipping through briefly.)
