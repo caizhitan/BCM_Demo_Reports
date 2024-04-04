@@ -1,6 +1,7 @@
 # BCM_Demo_Reports
 
-> [!IMPORTANT] > **Note: All data in this repo is fictional and does not depict actual financials**.
+> [!IMPORTANT]
+> **Note: All data in this repo is fictional and does not depict actual financials**.
 
 This repository focuses on just Reports, which is a small segment within BCM Web Portal which is **confidential** for internal LTA usage.
 
