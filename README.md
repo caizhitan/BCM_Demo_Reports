@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **Note: All data in this repo is fictional and does not depict actual financials**.
 
-This repository focuses on just Reports, which is a small segment within BCM Web Portal which is **confidential** for internal LTA usage.
+This repository focuses on just Reports (*and alot of data handling*), which is a small segment within BCM Web Portal which is **confidential** for internal LTA usage.
 
 _As such Minimal User Interfaces will be shared._
 
